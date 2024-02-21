@@ -14,24 +14,28 @@ namespace PratiqueWithCodeUnitTests
 
         }
         [TestMethod]
-        public void Parse_WhenIsNullOrWhiteSpace_ShouldThrowArgumentException()
+        [DataRow(null)]
+        [DataRow("")]
+        public void Parse_WhenIsNullOrWhiteSpace_ShouldThrowArgumentException(string data)
         {
             // Act
-            Action act = () => PhoneNumber.Parse("");
+            Action act = () => PhoneNumber.Parse(data);
             // Assert
             Assert.ThrowsException<ArgumentException>(act);
         }
         [TestMethod]
-        public void Parse_WhenLengthIsNot10_ShouldThrowArgumentException()
+        [DataRow("0")]
+        [DataRow("99999999999999999999999999999")]
+        public void Parse_WhenLengthIsNot10_ShouldThrowArgumentException(string number)
         {
             // Act
-            Action act = () => PhoneNumber.Parse("065383547");
+            Action act = () => PhoneNumber.Parse(number);
             // Assert
             Assert.ThrowsException<ArgumentException>(act);
         }
         [TestMethod]
-        [DataRow("0653835472")]
-        [DataRow("0653835473")]
+        [DataRow("0100000000")]
+        [DataRow("0999999999")]
         public void Parse_WhenNumberIsValide_ShouldReturnPhoneNumber(string number)
         {
             // Act

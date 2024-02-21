@@ -51,7 +51,6 @@ namespace PratiqueWithCodeUnitTests
             // Assert
             Assert.AreEqual($"({phoneNumber.Area}){phoneNumber.Major}-{phoneNumber.Minor}", result);
         }
-        
-        
+
     }
 }
